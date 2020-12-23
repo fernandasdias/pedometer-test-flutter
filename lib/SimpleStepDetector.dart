@@ -83,10 +83,10 @@ class SimpleStepDetector {
       }
       oldVelocityEstimate = velocityEstimate;
     } else {
-      double sensibility = 0.065;
+      double sensibility = 4;
       double velocity = velocityEstimate.abs();
       double oldVel = oldVelocityEstimate.abs();
-      if (velocity > 0.1)
+      if (velocity > sensibility && oldVel <= sensibility)
       // if (velocityEstimate.abs() > 0.1 && oldVelocityEstimate.abs() <= 0.1) //&&
       // (timeNs - lastStepTimeNs > 25600000))
       {
