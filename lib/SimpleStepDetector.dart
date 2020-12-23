@@ -81,10 +81,13 @@ class SimpleStepDetector {
         listener.step(timeNs);
         lastStepTimeNs = timeNs;
       }
+      oldVelocityEstimate = velocityEstimate;
     } else {
-      double sensibility = 0.10;
-      if (velocityEstimate.abs() > 2 * sensibility &&
-          oldVelocityEstimate.abs() <= 2 * sensibility) //&&
+      double sensibility = 0.065;
+      double velocity = velocityEstimate.abs();
+      double oldVel = oldVelocityEstimate.abs();
+      if (velocity > 0.1)
+      // if (velocityEstimate.abs() > 0.1 && oldVelocityEstimate.abs() <= 0.1) //&&
       // (timeNs - lastStepTimeNs > 25600000))
       {
         listener.step(timeNs);
